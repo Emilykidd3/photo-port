@@ -14,12 +14,20 @@ afterEach(cleanup);
 describe('Nav componenet', () => {
     // baseline test
     it('renders', () => {
-        render(<Nav />);
+        render(<Nav 
+            categories={categories}
+            setCurrentCategory={mockSetCurrentCategory}
+            currentCategory={mockCurrentCategoty}
+        />);
     });
 
     // snapshot test
     it('matches snapshot', () => {
-        const { asFragment } = render(<Nav />);
+        const { asFragment } = render(<Nav 
+            categories={categories}
+            setCurrentCategory={mockSetCurrentCategory}
+            currentCategory={mockCurrentCategoty}
+        />);
         expect(asFragment()).toMatchSnapshot();
     })
 })
@@ -27,7 +35,11 @@ describe('Nav componenet', () => {
 describe('emoji is visible', () => {
     it('insets emoji into the h2', () => {
         // arrange
-        const { getByLabelText } = render(<Nav />);
+        const { getByLabelText } = render(<Nav 
+            categories={categories}
+            setCurrentCategory={mockSetCurrentCategory}
+            currentCategory={mockCurrentCategoty}
+        />);
         // assert
         expect(getByLabelText('camera')).toHaveTextContent('📸');
     })
@@ -36,7 +48,11 @@ describe('emoji is visible', () => {
 describe('links are visible', () => {
     it('inserts text into the links', () => {
         // arrange
-        const { getByTestId } = render(<Nav />);
+        const { getByTestId } = render(<Nav 
+            categories={categories}
+            setCurrentCategory={mockSetCurrentCategory}
+            currentCategory={mockCurrentCategoty}
+        />);
 
         // assert
         expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
